@@ -11,7 +11,7 @@ actual object FileManagerUtil {
         removeFile(name)
         val tempFile = File.createTempFile(name, ".temp")
         tempFile.writeBytes(byteArray)
-        tempFile.renameTo(File(cacheDir + name))
+        tempFile.renameTo(File(getCacheDirName() + name))
 
     }
 
@@ -33,11 +33,11 @@ actual object FileManagerUtil {
     }
 
     actual fun unzipFile(name: String) {
-        unzip(File(cacheDir + name), cacheDir)
+        unzip(File(getCacheDirName() + name), getCacheDirName())
     }
 
     actual fun getJsonAsString(name: String): String {
-        val jsonFile = File(cacheDir + name)
+        val jsonFile = File(getCacheDirName() + name)
         return if (jsonFile.exists() && jsonFile.isFile && name.endsWith(".json")) {
             jsonFile.readText()
         } else {

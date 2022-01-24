@@ -40,7 +40,7 @@ actual object FileManagerUtil {
     }
 
     actual fun getJsonAsString(name: String): String {
-        val filePath = getCacheDir() + "catalog.json"
+        val filePath = getCacheDir() + name
         val json = NSString.stringWithContentsOfFile(filePath, NSUTF8StringEncoding, null)
         return json ?: ""
     }
